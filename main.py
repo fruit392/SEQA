@@ -13,6 +13,8 @@ URL = "http://the-internet.herokuapp.com/dynamic_controls"
 service = Service('/usr/bin/geckodriver')                               
 options = Options()
 options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
 
 @pytest.fixture(scope="module")
 def browser():
