@@ -11,7 +11,8 @@ import time
 URL = "http://the-internet.herokuapp.com/dynamic_controls"
 
 service = Service('/usr/bin/geckodriver')                               
-options = FirefoxOptions()
+options = Options()
+options.add_argument("--headless")
 
 @pytest.fixture(scope="module")
 def browser():
