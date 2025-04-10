@@ -1,5 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys                                              
+from selenium.webdriver.firefox.service import Service                                      
+from selenium.webdriver import FirefoxOptions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pytest
@@ -7,9 +10,12 @@ import time
 
 URL = "http://the-internet.herokuapp.com/dynamic_controls"
 
+service = Service('/usr/bin/geckodriver')                               
+options = FirefoxOptions()
+
 @pytest.fixture(scope="module")
 def browser():
-    driver = webdriver.Chrome(executable_path="path/to/chromedriver")  # Укажите свой путь
+    driver = webdriver.Firefox(service=service, options=options)   # Укажите свой путь
     driver.maximize_window()
     yield driver
     driver.quit()
